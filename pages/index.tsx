@@ -6,13 +6,15 @@ import { useEffect } from "react";
 
 export default observer(function Home() {
   const store = useLocalObservable(() => PuzzleStore);
+  
   useEffect(() => {
     store.init();
-    window.addEventListener("keyup", store.handleKeyup);
+    const handleKeyup = (e: KeyboardEvent) => store.handleKeyup(e);
+    window.addEventListener("keyup", handleKeyup);
     return () => {
-      window.removeEventListener("keyup", store.handleKeyup);
+      window.removeEventListener("keyup", handleKeyup);
     };
-  }, []);
+  }, [store]);
   return (
     <div className="flex flex-col h-screen w-screen text-center items-center justify-around min-w-fit min-h-fit">
       <div className="">
@@ -56,7 +58,7 @@ export default observer(function Home() {
       <div className="text-xs font-semibold mt-4">
         Designed & Developed By{" "}
         <span className="text-transform underline">
-          <a href="https://rutvijsathe.dev">Rutvij Sathe</a>
+          <a href="https://rutvijsathe.dev" rel="noopener noreferrer" target="_blank">Rutvij Sathe</a>
         </span>
       </div>
     </div>

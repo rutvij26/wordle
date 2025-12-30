@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wordle.rutvijsathe.dev/sitemap.xml
+

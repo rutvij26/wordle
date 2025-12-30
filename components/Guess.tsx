@@ -1,4 +1,6 @@
-export default function Guess({ isGuessed, guess, word }) {
+import { memo } from 'react'
+
+function Guess({ isGuessed, guess, word }) {
     return (
       <div className="mb-2 grid grid-cols-5 gap-2">
         {new Array(5).fill(0).map((_, i) => {
@@ -22,3 +24,5 @@ export default function Guess({ isGuessed, guess, word }) {
       </div>
     )
   }
+
+export default memo(Guess)
